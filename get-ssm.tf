@@ -9,3 +9,9 @@ locals {
     ec2_sg_id   = "/pragra/project-a/ec2/sg/id"
   }
 }
+
+data "aws_ssm_parameter" "resources" {
+  for_each = local.ssm_parameters_names
+
+  name = each.value
+}
